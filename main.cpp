@@ -1,95 +1,156 @@
-#include <iostream>
-#include <locale.h>
-#include <string.h>
 
+#include<iostream>
 using namespace std;
 
-int main(int argc,char *argv[])
+int n, x, y;
+
+void pluss()
 {
-setlocale(LC_ALL,"RUS");	
-char choice[1][1];
-choice[0][0]='y';
-while((char)choice[0][0]=='y'){
-    int op1,op2;	
-    char x[1][1];	
-       do{ 
-            cout<<"Âûáåðèòå ïîæàëóéñòà îäíó èç îïåðàöèé[+.-.*,/,%,^,!,&,|,<,>]:"<<endl;
-            cin>>*x;
-         }while(x[0][0]!='+' && x[0][0]!='-' && x[0][0]!='*' && x[0][0]!='/' && x[0][0]!='%' && x[0][0]!='^' && x[0][0]!='!' && x[0][0]!='&' && x[0][0]!='|' && x[0][0]!='<' && x[0][0]!='>');
-         if(x[0][0]=='+' || x[0][0]=='-' || x[0][0]=='*' || x[0][0]=='/' || x[0][0]=='%' || x[0][0]=='^'|| x[0][0]=='>' || x[0][0]=='<' || x[0][0]=='|' || x[0][0]=='&')
-         {
-            cout<<"Ââåäèòå ïåðâîîå ÷èñëî:"<<endl;
-            cin>>op1;
-          if(cin.good())  
-            cout<<"Ââåäèòå âòîðîå ÷èñëî:"<<endl;
-          if(cin.good())    
-            cin>>op2;
-               if(cin.good())
-		       {  
-                  switch((char)x[0][0])
-		             {
-                        case '+':cout<<"Ñóììà:"<<(op1+op2)<<endl;
-                           break;
-                        case '-':cout<<"Ðàçíîñòü:"<<(op1-op2)<<endl;
-                           break;
-                        case '*':cout<<"Ïðîèçâåäåíèå:"<<(op1*op2)<<endl;
-                           break;
-                        case '/':
-                           if (op2!=0)
-				              cout<<"×àñòíîå:"<<(double)op1/(double)op2<<endl;
-                           else
-                              cerr<<"Îøèáêà:íà 0 äåëèòü íåëüçÿ!"<<endl;
-                           break;
-                        case '%':cout<<"Ìîäóëü:"<<(op1%op2)<<endl;
-			               break;
-			            case '^':
-			            	  for(int i=0,j=op1;i<op2-1;i++)
-			            	     op1*=j;
-						      cout<<"Âîçâåäåíèå â ñòåïåíü:"<<op1<<endl;
-			               break;
-			            case '&':cout<<"Ïîáèòîâîå È:"<<(op1&op2)<<endl;
-			               break;
-			            case '<':
-			   	           if(op2>=0) 	   
-			                  cout<<"Ïîáèòîâûé öèêëè÷åñêèé ñäâèã âëåâî:"<<(op1<<op2)<<endl;
-			               else
-					          cerr<<"Íåêîððåêòíûå äàííûå"<<endl;  
-			               break;
-			            case '>':
-			               if(op2>=0)
-			                  cout<<"Ïîáèòîâûé öèêëè÷åñêèé ñäâèã âïðàâî:"<<(op1>>op2)<<endl;
-			               else
-			                  cerr<<"Íåêîððåêòíûå äàííûå"<<endl;
-			               break; 
-			            case '|':cout<<"Ïîáèòîâîå ÈËÈ:"<<(op1|op2)<<endl;
-			               break;
-			            default:cerr<<"Îøèáêà"<<endl;               	   	       
-                      }
-                }
-               else
-               {
-               	   cin.ignore();
-			       cin.clear();
-			       cout<<"Íåêîððåêòíûå äàííûå"<<endl;
-		       }
-		   }
-		   if(x[0][0]=='!')
-		   {
-		      cout<<"Ââåäèòå ïîæàëóéñòà îïåðàòîð:"<<endl;
-		      cin>>op1;
-		         switch((char)x[0][0])
-		         {
-		      	    case '!':cout<<(!op1)<<endl;
-		      	       break;
-		      	    default:
-				       cerr<<"Îøèáàêà"<<endl;  
-			     }
-		    }
-            do{
-               cout<<"Åñëè âû õîòèòå ïðîäîëæèòü ââåäèòå Y,åñëè çàêîí÷èòü ââåäèòå N"<<endl;
-               cin>>*choice;
-              }while((char)choice[0][0]!='y'&&(char)choice[0][0]!='n');
+	setlocale(LC_ALL, "Russian");
+	::n = ::x + ::y;
+	cout << "Рузультат:" << ::n<< endl;
 }
-cout<<"Äî ñâèäàíèÿ!"<<endl;
-return 0;		
+void minuss()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x - ::y;
+	cout << "Рузультат:" << ::n << endl;
 }
+void umn()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x * ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void deli()
+{
+	setlocale(LC_ALL, "Russian");
+	if (::y != 0)
+	{
+		::n = ::x / ::y;
+		cout << "Рузультат:" << ::n << endl;
+	}
+	else
+		cout << "На 0 делить нельзя!";
+}
+void fun1()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x % ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun2()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x ^ ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun3()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = !::x;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun4()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x & ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun5()
+{
+	setlocale(LC_ALL, "Russian");
+	::n = ::x | ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun6()
+{
+	setlocale(LC_ALL, "Russian");
+	::y = 1;
+	::n = ::x < ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+void fun7()
+{
+	setlocale(LC_ALL, "Russian");
+	::y = 1;
+	::n = ::x > ::y;
+	cout << "Рузультат:" << ::n << endl;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	char a, soglas;
+	soglas = 'y';
+	while (soglas == 'y')
+	{		
+		cout << "Выберите операцию [+, -, *, /, %, ^, !, &, |, <, >]:";
+		cin >> a;
+		if (a != '<' || a != '>' || a != '!')
+		{
+			cout << "Введите 1 число";
+			cin >> ::x;
+			cout << "Введите 2 число";
+			cin >> ::y;
+		}
+		else
+		{
+			cout << "Введите число";
+			cin >> ::x;
+		}
+		switch (a)
+		{
+		case'+':
+			pluss();
+			break;
+
+		case'-':
+			minuss();
+			break;
+
+		case'*':
+			umn();
+			break;
+
+		case'/':
+			deli();
+			break;
+
+		case'%':
+			fun1();
+			break;
+
+		case'^':
+			fun2();
+			break;
+
+		case'!':
+			fun3();
+			break;
+
+		case'&':
+			fun4();
+			break;
+
+		case'|':
+			fun5();
+			break;
+
+		case'<':
+			fun6();
+			break;
+
+		case'>':
+			fun7();
+			break;
+		default:
+			cout << "Ошибка"<< endl;
+
+		}
+		cout << "Продолжить работу? y/n \n";
+		cin >> soglas;
+	}
+		return 0;
+}
+
