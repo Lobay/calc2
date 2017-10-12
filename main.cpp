@@ -1,156 +1,148 @@
-
-#include<iostream>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cmath>
 using namespace std;
-
-int n, x, y;
-
-void pluss()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x + ::y;
-	cout << "Рузультат:" << ::n<< endl;
+int add(int a, int b) {
+	return a + b;
 }
-void minuss()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x - ::y;
-	cout << "Рузультат:" << ::n << endl;
+int sub(int a, int b) {
+	return a - b;
 }
-void umn()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x * ::y;
-	cout << "Рузультат:" << ::n << endl;
+int mul(int a, int b) {
+	return a * b;
 }
-void deli()
-{
-	setlocale(LC_ALL, "Russian");
-	if (::y != 0)
-	{
-		::n = ::x / ::y;
-		cout << "Рузультат:" << ::n << endl;
+double div(double a, int b) {
+	double c;
+	c = a / b;
+	return c;
+}
+int mod(int a, int b) {
+	cout « "Введите значение модуля" « endl;
+	int m;
+	cin » m;
+	return ((a - b) % m);
+}
+double pow(double a) {
+	cout « "Введите значение степени" « endl;
+	int p;
+	cin » p;
+	double a1 = a;
+	if (p > 0) {
+		while (p > 1) {
+			a = a1 * a;
+			p--;
+		}
+	} else {
+		if (p < 0) {
+			a = 1 / a;
+			while (p < -1) {
+				a = a / a1;
+				p++;
+			}
+		} else
+			a = 1;
 	}
-	else
-		cout << "На 0 делить нельзя!";
+	return a;
 }
-void fun1()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x % ::y;
-	cout << "Рузультат:" << ::n << endl;
+int rol(int a) {
+	return (a « 1);
 }
-void fun2()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x ^ ::y;
-	cout << "Рузультат:" << ::n << endl;
+int ror(int a) {
+	return (a » 1);
 }
-void fun3()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = !::x;
-	cout << "Рузультат:" << ::n << endl;
+int nott(int a) {
+	return (!a);
 }
-void fun4()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x & ::y;
-	cout << "Рузультат:" << ::n << endl;
+int andd(int a, int b) {
+	return (a & b);
 }
-void fun5()
-{
-	setlocale(LC_ALL, "Russian");
-	::n = ::x | ::y;
-	cout << "Рузультат:" << ::n << endl;
+int orr(int a, int b) {
+	return (a | b);
 }
-void fun6()
-{
-	setlocale(LC_ALL, "Russian");
-	::y = 1;
-	::n = ::x < ::y;
-	cout << "Рузультат:" << ::n << endl;
-}
-void fun7()
-{
-	setlocale(LC_ALL, "Russian");
-	::y = 1;
-	::n = ::x > ::y;
-	cout << "Рузультат:" << ::n << endl;
-}
-
-int main()
-{
-	setlocale(LC_ALL, "Russian");
-	char a, soglas;
-	soglas = 'y';
-	while (soglas == 'y')
-	{		
-		cout << "Выберите операцию [+, -, *, /, %, ^, !, &, |, <, >]:";
-		cin >> a;
-		if (a != '<' || a != '>' || a != '!')
-		{
-			cout << "Введите 1 число";
-			cin >> ::x;
-			cout << "Введите 2 число";
-			cin >> ::y;
+int main() {
+	while (1) {
+		cout « endl
+		« "Выберите оператор [+, -, *, /, %, ^, !, &, |, <, >]" « endl;
+		char operand;
+		cin » operand;
+		int a, b;
+		switch (operand) {
+			case '+':
+				cout « "Введите перове число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « add(a, b) « endl;
+				break;
+			case '-':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « sub(a, b) « endl;
+				break;
+			case '*':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « mul(a, b) « endl;
+				break;
+			case '/':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				if (b != 0) {
+					cout « div(double(a), b) « endl;
+				} else
+					cout « "Ошибка. Деление на ноль" « endl;
+				break;
+			case '%':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « mod(a, b) « endl;
+				break;
+			case '^':
+				cout « "Ведите число" « endl;
+				cin » a;
+				cout « pow((double)a);
+				break;
+			case '<':
+				cout « "Введите число" « endl;
+				cin » a;
+				cout « rol(a) « endl;
+				break;
+			case '>':
+				cout « "Введите число" « endl;
+				cin » a;
+				cout « ror(a) « endl;
+				break;
+			case '!':
+				cout « "Введите число" « endl;
+				cin » a;
+				cout « nott(a) « endl;
+				break;
+			case '&':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « andd(a, b) « endl;
+				break;
+			case '|':
+				cout « "Введите первое число" « endl;
+				cin » a;
+				cout « "Введите второе число" « endl;
+				cin » b;
+				cout « orr(a, b) « endl;
+				break;
+			default:
+				cout « "Ошибка" « endl;
 		}
-		else
-		{
-			cout << "Введите число";
-			cin >> ::x;
-		}
-		switch (a)
-		{
-		case'+':
-			pluss();
-			break;
-
-		case'-':
-			minuss();
-			break;
-
-		case'*':
-			umn();
-			break;
-
-		case'/':
-			deli();
-			break;
-
-		case'%':
-			fun1();
-			break;
-
-		case'^':
-			fun2();
-			break;
-
-		case'!':
-			fun3();
-			break;
-
-		case'&':
-			fun4();
-			break;
-
-		case'|':
-			fun5();
-			break;
-
-		case'<':
-			fun6();
-			break;
-
-		case'>':
-			fun7();
-			break;
-		default:
-			cout << "Ошибка"<< endl;
-
-		}
-		cout << "Продолжить работу? y/n \n";
-		cin >> soglas;
 	}
-		return 0;
+	return 0;
 }
-
